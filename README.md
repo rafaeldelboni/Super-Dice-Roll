@@ -39,8 +39,6 @@ Super Dice Roll is currently extended with the following plugins:
 Icon by [delapouite.com](http://delapouite.com)
 Dice images by [Wikimedia](https://www.wikimedia.org/)
 
-- [monolog/monolog](https://github.com/akalongman/php-telegram-bot)
-
 ## License
 
 Please see the [LICENSE](https://github.com/RafaelDelboni/Super-Dice-Roll/blob/master/LICENSE.md) included in this repository for a full copy of the MIT license, which this project is licensed under.
