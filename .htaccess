@@ -1,0 +1,12 @@
+# Use PHP55
+AddHandler application/x-httpd-php55 .php
+<IfModule mod_suphp.c>
+suPHP_ConfigPath /opt/php54/lib
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
