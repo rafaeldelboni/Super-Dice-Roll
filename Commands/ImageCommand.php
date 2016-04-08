@@ -23,6 +23,7 @@ class ImageCommand extends Command
     protected $description = 'Send Image';
     protected $usage = '/image';
     protected $version = '1.0.0';
+    protected $public = true;
     /**#@-*/
     /**
      * {@inheritdoc}
