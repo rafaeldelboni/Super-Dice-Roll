@@ -1,6 +1,5 @@
 composer.phar
 .DS_Store
 Thumbs.db
-Upload/
 vendor/
 *.log
