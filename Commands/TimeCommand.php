@@ -149,9 +149,23 @@ EAST +10:00 东澳大利亚标准时间
         $message_id = $message->getMessageId();
 	$chat_id = $message->getChat()->getId();
  //       $text = trim($message->getText(true));
-        $text = strftime ("Time is %F  %H:%M:%S" ,time());
+	/*
+	$response = Request::getMe();
+	if (!$response['ok']) {
+		throw new Execption("Can not connect to server");
+	}
+	$bot = $response['result'];
+	$botname = $bot['username'];
+	if (empty($botname)) {
+		$text = "NULL";
+	} else {
+	$text = $botname;
+        }
+	*/
+	$text = strftime ("Time is %F  %H:%M:%S" ,time());
         $data = [
             'chat_id' => $chat_id,
+	     'disable_notification' => false,
              'reply_to_message_id' => $message_id,   
 	     'text'    => $text,
         ];

@@ -36,6 +36,7 @@ class ImageCommand extends Command
         $data = [];
         $data['chat_id'] = $chat_id;
         $data['caption'] = $text;
+	$data['disable_notification'] = false;
 	/*
         return Request::sendPhoto($data, $this->telegram->getUploadPath().'/'.'image.jpg');
  	*/
