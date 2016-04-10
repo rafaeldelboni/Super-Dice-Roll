@@ -1,6 +1,16 @@
 # Telegram Bot: Super Dice Roll 
-Super simple Telegram Bot for rolling dices using the new feature [InlineQuery](https://core.telegram.org/bots/api#inlinequery)
-[Working version](https://telegram.me/superdiceroll_bot)
+Super simple Telegram Bot for rolling dices using the new feature
+
+Support send image now 
+
+    command:
+        /image 
+    
+[InlineQuery](https://core.telegram.org/bots/api#inlinequery)
+
+[Superdiceroll_bot](https://telegram.me/superdiceroll_bot)
+
+[imagebot](https://telegram.me/nx511jbot "nx511jbot")
 
 ### Requirements
 
@@ -29,6 +39,9 @@ To use this project you need to install [Composer](https://getcomposer.org/)
     ```
 
 4. Execute the sethook.php and you are done :)
+    ```
+    https://you.domain.com/path/to/sethook.php
+    ```
 
 ### Plugins
 Super Dice Roll is currently extended with the following plugins:

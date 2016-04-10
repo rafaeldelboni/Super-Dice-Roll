@@ -1,6 +1,6 @@
 composer.phar
 .DS_Store
 Thumbs.db
-
 vendor/
 *.log
+*.pem
