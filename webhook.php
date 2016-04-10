@@ -2,7 +2,7 @@
 $loader = require __DIR__.'/vendor/autoload.php';
 
 $API_KEY = 'You_API_Key';
-$BOT_NAME = "you_bot_name';
+$BOT_NAME = 'you_bot_name';
 $COMMANDS_FOLDER = __DIR__.'/Commands/';
 
 $upload_path = __DIR__ . '/Upload/';
