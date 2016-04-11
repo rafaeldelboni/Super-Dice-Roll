@@ -5,6 +5,10 @@ Support send image now
 
     command:
         /image 
+        
+    command:
+        /fuli <CarNo.> - grap the magnet link from website
+        
     
 [InlineQuery](https://core.telegram.org/bots/api#inlinequery)
 
