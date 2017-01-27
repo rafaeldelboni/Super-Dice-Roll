@@ -100,25 +100,33 @@ class RollCommand extends Command
 						N = Number of dices
 						D = Type of dices (D6, D12, D20)
 						M = Modifiers (+1, -3)
-                     Example: /roll 3D6+3';
+            Example: /roll 3D6+3';
 		} else {
-            $parsedRoll = $this->parseRollString($rollText);
-            if (!$parsedRoll) {
-                return false;
+            $parsedRoll = $this->parseRollString($text);
+
+            if ($parsedRoll) {
+                $result = $this->calculateRoll($parsedRoll);
+                
+                $msgText = $username . " | " . $text . " | " . $result->sum;
+                $msgText .= "\n" . "Rolled values: ";
+                for ($i = 0; $i < count($result->rolls); $i++) {
+                    $msgText .= $result->rolls[$i];
+                    if ($i < count($result->rolls)-1) {
+                        $msgText .= ', ';
+                    }
+                };
+                
+                $text = $msgText;
             }
-
-            $result = $this->calculateRoll($parsedRoll);
-            
-            $msgText = $username . " | " . $rollText . " | " . $result->sum;
-            $msgText .= "\n" . "Rolled values: ";
-            for ($i = 0; $i < count($result->rolls); $i++) {
-                $msgText .= $result->rolls[$i];
-                if ($i < count($result->rolls)-1) {
-                    $msgText .= ', ';
-                }
-            };
-
-            return Request::sendMessage($msgText);
         }
+        
+        $data = [
+            'chat_id' => $chat_id,
+            'disable_notification' => false,
+            'reply_to_message_id' => $message_id,   
+            'text'    => $text,
+        ];
+
+        return Request::sendMessage($data);
     }
 }
