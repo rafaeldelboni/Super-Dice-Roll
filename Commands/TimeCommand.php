@@ -15,68 +15,68 @@ use Longman\TelegramBot\Request;
  */
 class TimeCommand extends Command
 {
-    /**#@+
-     * {@inheritdoc}
-     */
+	/**#@+
+		* {@inheritdoc}
+		*/
     protected $name = 'time';
     protected $description = 'Show current time';
     protected $usage = '/time <timezone> ';
     protected $version = '1.0.2';
     protected $public = true;
 
-     //set time zone
-private function IsTimeZone($value,$Timezone) {
-  $tt = array(
-          'EET',
-          'UTC',
-          'PRC',
-          'CET');
+	//set time zone
+	private function IsTimeZone($value,$Timezone) {
+		$tt = array(
+				'EET',
+				'UTC',
+				'PRC',
+				'CET');
 
-	foreach($tt as $v) {
-		if ($v == $value) {
-			return $value;
+		foreach($tt as $v) {
+			if ($v == $value) {
+				return $value;
+			}
 		}
+
+		return 'PRC';
 	}
 
-	return 'PRC';
-}
-
-// date_default_timezone_set('UTC+1');
+	// date_default_timezone_set('UTC+1');
     /**#@-*/
     /**
      * {@inheritdoc}
      */
     public function execute()
     {
-	$message = $this->getMessage();
-        $message_id = $message->getMessageId();
-	$chat_id = $message->getChat()->getId();
-	$text = $message->getText(true);
-	if(empty($text)) {
-		$text = 'You must specify timezone in format: /time <timezone>
-			timezone list -> 
-					EET = UTC+2
-					UTC = UTC
-					PRC = PRC --- UTC+8
-					CET = 	UTC+1
-			';
-	} else {
-	$tz =   $this->IsTimeZone($text,$timezone);
-	if (empty($tz)) {
-		date_default_timezone_set('PRC');
-		 $text =  strftime ("Time is %F  %H:%M:%S" ,time());
-	} else {
-		date_default_timezone_set($tz);
-	 	$text =  strftime ("Time is %F  %H:%M:%S" ,time());
-	}
-	
-        }
-	$data = [
-            'chat_id' => $chat_id,
-	     'disable_notification' => false,
-             'reply_to_message_id' => $message_id,   
-	     'text'    => $text,
-        ];
+		$message = $this->getMessage();
+			$message_id = $message->getMessageId();
+		$chat_id = $message->getChat()->getId();
+		$text = $message->getText(true);
+		if(empty($text)) {
+			$text = 'You must specify timezone in format: /time <timezone>
+				timezone list -> 
+						EET = UTC+2
+						UTC = UTC
+						PRC = PRC --- UTC+8
+						CET = 	UTC+1
+				';
+		} else {
+			$tz =   $this->IsTimeZone($text,$timezone);
+			if (empty($tz)) {
+				date_default_timezone_set('PRC');
+				$text =  strftime ("Time is %F  %H:%M:%S" ,time());
+			} else {
+				date_default_timezone_set($tz);
+				$text =  strftime ("Time is %F  %H:%M:%S" ,time());
+			}
+		}
+		$data = [
+				'chat_id' => $chat_id,
+			'disable_notification' => false,
+				'reply_to_message_id' => $message_id,   
+			'text'    => $text,
+			];
+
         return Request::sendMessage($data);
     }
 }
